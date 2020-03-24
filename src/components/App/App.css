@@ -1,0 +1,18 @@
+.sw-image {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.sw-block {
+  padding: 0;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.sw-block--padding {
+  padding: 20px;
+}
+
+.sw-block--margin {
+  margin: 20px;
+}

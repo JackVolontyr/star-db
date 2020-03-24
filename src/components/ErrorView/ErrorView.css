@@ -1,0 +1,8 @@
+.sw-error-view {
+  color: gold;
+  text-align: center;
+}
+
+.sw-error-view--padding {
+  padding: 20px;
+}
