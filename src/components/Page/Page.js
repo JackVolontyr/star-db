@@ -9,12 +9,9 @@ import ErrorCatcher from '../ErrorCatcher';
 import './Page.css';
 
 export default class Page extends Component {
-  state = { itemId: null, };
-
+  state = { itemId: null }
   clickOnItem = (itemId) => { this.setState({ itemId }) }
-  getDataPromise = (itemId) => {
-    if (itemId) return this.props.getDataItem(itemId);
-  }
+  getDataPromise = (itemId) => { if (itemId) return this.props.getDataItem(itemId) }
 
   render () {
     const {
@@ -25,32 +22,24 @@ export default class Page extends Component {
 
     const { itemId } = this.state;
 
-    const list = (
-      <List
-        dataPromise={ getDataList() }
-        clickOnItem={ this.clickOnItem }>
-        { renderItem }
-      </List>
-    );
+    const list = <List
+      dataPromise={ getDataList() }
+      clickOnItem={ this.clickOnItem }>
+      { renderItem }
+    </List>
 
-    const details = (
-      <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
-        <Details
-          dataPromise={ this.getDataPromise(itemId) }
-          imageString={ imageString }
-          imageData={ imageData }
-          itemId={ itemId }>
-          { children }
-        </Details>
+    const details = <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
+      <Details
+        dataPromise={ this.getDataPromise(itemId) }
+        imageString={ imageString }
+        imageData={ imageData }
+        itemId={ itemId }>
+        { children }
+      </Details>
 
-        <ErrorButton />
-      </ErrorCatcher>
-    );
+      <ErrorButton />
+    </ErrorCatcher>
 
-    return (
-      <RowDouble
-        left={ list } leftSize= { 4 }
-        right={ details } rightSize={ 8 } />
-    );
+    return <RowDouble left={ list } leftSize= { 4 } right={ details } rightSize={ 8 } />
   }
 }
