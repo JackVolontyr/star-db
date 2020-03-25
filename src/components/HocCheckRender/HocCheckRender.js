@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Spinner from '../Spinner';
 import ViewError from '../ViewError';
 
-const HocCheckRender = (View) => {
+const HocCheckRender = (View, className, CustomTag = 'div') => {
   return (props) => {
     const { data: { isLoading, isError } } = props;
 
@@ -12,7 +12,9 @@ const HocCheckRender = (View) => {
     const errorMessage = !isLoading && isError ?
       <ViewError theme={ 'padding' } /> : null;
 
-    return <Fragment>{spinner}{content}{errorMessage}</Fragment>;
+    return <CustomTag className={ className }>
+      {spinner}{content}{errorMessage}
+    </CustomTag>;
   };
 }
 

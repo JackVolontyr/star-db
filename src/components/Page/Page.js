@@ -11,20 +11,23 @@ import './Page.css';
 export default class Page extends Component {
   state = { itemId: null, };
 
-  clickOnItem = (id) => { this.setState({ itemId: id }) }
+  clickOnItem = (itemId) => { this.setState({ itemId }) }
+  getDataPromise = (itemId) => {
+    if (itemId) return this.props.getDataItem(itemId);
+  }
 
   render () {
     const {
       imageString, imageData,
       renderItem, children,
-      getDataList, getDataItem,
+      getDataList,
     } = this.props;
 
     const { itemId } = this.state;
 
     const list = (
       <List
-        getDataList={ getDataList }
+        dataPromise={ getDataList() }
         clickOnItem={ this.clickOnItem }>
         { renderItem }
       </List>
@@ -33,10 +36,9 @@ export default class Page extends Component {
     const details = (
       <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
         <Details
-          getDataItem={ getDataItem }
+          dataPromise={ this.getDataPromise(itemId) }
           imageString={ imageString }
           imageData={ imageData }
-          renderItem={ renderItem }
           itemId={ itemId }>
           { children }
         </Details>

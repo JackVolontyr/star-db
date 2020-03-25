@@ -4,7 +4,7 @@ import HocCheckRender from '../HocCheckRender';
 import './List.css';
 
 const List = (props) => {
-  const { data: { items }, clickOnItem, children } = props;
+  const { data: { result: items }, clickOnItem, children } = props;
 
   const prepareItems = (items) => {
     return items.map(
@@ -14,7 +14,10 @@ const List = (props) => {
     );
   };
 
-  return <ul className="sw-block sw-list jumbotron list-group rounded">{ prepareItems(items) }</ul>;
+  return prepareItems(items);
 }
 
-export default HocData(HocCheckRender(List));
+export default HocData(
+  HocCheckRender(List, "sw-block sw-list jumbotron list-group rounded", 'ul'),
+  true
+);

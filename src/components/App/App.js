@@ -34,16 +34,18 @@ export default class App extends Component {
       getStarship, getAllStarships
     } = new SwapiService();
 
+    const itemId = Math.floor(Math.random() * 25) + 2;
+
     return (
       <div className="container">
         <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
           <Header />
           <Details
-            defaultMessage={ <Spinner /> }
-            itemId={ Math.floor(Math.random() * 25) + 2 }
-            getDataItem={ getPlanet }
+            dataPromise={ getPlanet(itemId) }
             imageString={ 'planets' }
-            imageData={ getImage }>
+            imageData={ getImage }
+            defaultMessage={ <Spinner /> }
+            itemId={ itemId }>
             <ItemField field="population" label="Population" />
             <ItemField field="rotationPeriod" label="Rotation Period" />
             <ItemField field="diameter" label="Diameter" />
