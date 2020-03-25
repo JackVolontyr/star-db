@@ -26,15 +26,6 @@ export default class App extends Component {
     return (`${ name } (${ model }, length: ${ length })`)
   }
 
-  // prepareFields = (arr) => {
-  //   return arr.map((item) => {
-  //     const preparedKey =
-  //       item.charAt(0).toUpperCase() +
-  //       item.slice(1).split(' ').join('');
-  //     return <ItemField field={ preparedKey } label={ item } />;
-  //   });
-  // }
-
   render() {
     const {
       getImage,
@@ -47,7 +38,6 @@ export default class App extends Component {
       <div className="container">
         <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
           <Header />
-
           <Details
             defaultMessage={ <Spinner /> }
             itemId={ Math.floor(Math.random() * 25) + 2 }
