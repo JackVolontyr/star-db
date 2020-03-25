@@ -1,81 +1,103 @@
 import React, { Component } from 'react';
+import SwapiService from '../../services/SwapiService';
 
 import Header from '../Header';
-import RandomPlanet from '../RandomPlanet';
-import ListPeople from '../ListPeople';
-import DetailsPerson from '../DetailsPerson';
-import ErrorView from '../ErrorView';
+import Details from '../Details';
+import Page from '../Page';
+import ItemField from '../ItemField';
+import Spinner from '../Spinner';
+import ErrorButton from '../ErrorButton';
+import ErrorCatcher from '../ErrorCatcher';
 
 import './App.css';
 
 export default class App extends Component {
-  state = {
-    isShowRandomPlanet: true,
-    currentPersonId: null,
-    isHasError: false,
-  };
+  state = { isShowRandomPlanet: true, };
 
-  clickOnPerson = (id) => {
-    this.setState({ currentPersonId: id })
+  renderItemPerson = ({ name, gender, birthYear }) => {
+    return (`${ name } (${ gender }, ${ birthYear })`)
   }
 
-  componentDidCatch() {
-    this.setState({ isHasError: true })
+  renderItemPlanet = ({ name, diameter }) => {
+    return <span>{ name } <b style={ { color: 'gold' } }>(diameter: { diameter })</b></span>;
   }
+
+  renderItemStarship = ({ name, model, length }) => {
+    return (`${ name } (${ model }, length: ${ length })`)
+  }
+
+  // prepareFields = (arr) => {
+  //   return arr.map((item) => {
+  //     const preparedKey =
+  //       item.charAt(0).toUpperCase() +
+  //       item.slice(1).split(' ').join('');
+  //     return <ItemField field={ preparedKey } label={ item } />;
+  //   });
+  // }
 
   render() {
-    const { currentPersonId, isHasError } = this.state;
-
-    if (isHasError) {
-      return (
-        <div className="sw-block sw-block--padding sw-block--margin jumbotron rounded">
-          <ErrorView />
-        </div>
-      );
-    }
+    const {
+      getImage,
+      getPerson, getAllPeople,
+      getPlanet, getAllPlanets,
+      getStarship, getAllStarships
+    } = new SwapiService();
 
     return (
       <div className="container">
-        <Header />
-        <RandomPlanet />
+        <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
+          <Header />
 
-        <ErrorButton />
+          <Details
+            defaultMessage={ <Spinner /> }
+            itemId={ Math.floor(Math.random() * 25) + 2 }
+            getDataItem={ getPlanet }
+            imageString={ 'planets' }
+            imageData={ getImage }>
+            <ItemField field="population" label="Population" />
+            <ItemField field="rotationPeriod" label="Rotation Period" />
+            <ItemField field="diameter" label="Diameter" />
+          </Details>
 
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ListPeople clickOnPerson={ this.clickOnPerson } />
-          </div>
-          <div className="col-md-6">
-            <DetailsPerson personId={ currentPersonId } />
-          </div>
-        </div>
+          <ErrorButton />
 
+          <Page
+            getDataItem={ getPerson }
+            getDataList={ getAllPeople }
+            imageString={ 'characters' }
+            renderItem={ this.renderItemPerson }
+            imageData={ getImage }>
+            <ItemField field="gender" label="Gender" />
+            <ItemField field="birthYear" label="Birth Year" />
+            <ItemField field="eyeColor" label="Eye Color" />
+          </Page>
+
+          <Page
+            getDataItem={ getPlanet }
+            getDataList={ getAllPlanets }
+            imageString={ 'planets' }
+            renderItem={ this.renderItemPlanet }
+            imageData={ getImage }>
+            <ItemField field="population" label="Population" />
+            <ItemField field="rotationPeriod" label="Rotation Period" />
+            <ItemField field="diameter" label="Diameter" />
+          </Page>
+
+          <Page
+            getDataItem={ getStarship }
+            getDataList={ getAllStarships }
+            imageString={ 'starships' }
+            renderItem={ this.renderItemStarship }
+            imageData={ getImage }>
+            <ItemField field="model" label="Model" />
+            <ItemField field="manufacturer" label="Manufacturer" />
+            <ItemField field="length" label="Length" />
+            <ItemField field="crew" label="Crew" />
+            <ItemField field="passengers" label="Passengers" />
+            <ItemField field="cargoCapacity" label="Cargo Capacity" />
+          </Page>
+        </ErrorCatcher>
       </div>
     );
-  }
-}
-
-class ErrorButton extends Component {
-  state = {
-    renderError: false
-  }
-
-  render() {
-    console.log('error rendering!');
-
-    if (this.state.renderError) {
-      this.empty.empty = 0;
-    }
-
-    return (
-      <button
-        className="btn btn-danger btn-lg"
-        style={ { marginBottom: '40px' } }
-        onClick={
-          () => this.setState({ renderError: true })
-        }>
-        Throw Error
-      </button>
-    )
   }
 }

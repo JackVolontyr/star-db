@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 import './Spinner.css';
 
 const Spinner = () => {
@@ -8,15 +7,10 @@ const Spinner = () => {
       <div className="sw-spinner__animation">
         <div></div>
         <div></div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
+        <div><div></div></div>
+        <div><div></div></div>
       </div>
     </div>
   );
 }
-
 export default Spinner;
