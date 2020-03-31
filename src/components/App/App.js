@@ -7,7 +7,7 @@ import { ProviderSwapiService } from '../ContextSwapiService';
 import ErrorButton from '../ErrorButton';
 import ErrorCatcher from '../ErrorCatcher';
 import SwapiService from '../../services/SwapiService';
-import DummySwapiService from '../../services/DummySwapiService';
+// import DummySwapiService from '../../services/DummySwapiService';
 
 import './App.css';
 
