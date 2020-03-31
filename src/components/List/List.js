@@ -1,6 +1,5 @@
 import React from 'react';
-import HocData from '../HocData';
-import HocCheckRender from '../HocCheckRender';
+import { HocData, HocCheckRender } from '../HocHelpers';
 import './List.css';
 
 const List = (props) => {

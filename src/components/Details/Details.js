@@ -1,7 +1,6 @@
 import React from 'react';
 import DetailsList from '../DetailsList';
-import HocData from '../HocData';
-import HocCheckRender from '../HocCheckRender';
+import { HocData, HocCheckRender } from '../HocHelpers';
 
 import './Details.css';
 
