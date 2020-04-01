@@ -2,7 +2,6 @@ import React from 'react';
 
 import Page from '../Page';
 import ItemField from '../ItemField';
-
 import { ConsumerSwapiService } from '../ContextSwapiService';
 
 const PagePerson = () => <ConsumerSwapiService>

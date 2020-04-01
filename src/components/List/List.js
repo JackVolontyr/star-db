@@ -16,6 +16,10 @@ const List = (props) => {
   return prepareItems(items);
 }
 
+List.defaultProps = {
+  clickOnItem: (id) => console.log(id)
+}
+
 export default HocData(
   HocCheckRender(List, "sw-block sw-list jumbotron list-group rounded", 'ul'),
   true
