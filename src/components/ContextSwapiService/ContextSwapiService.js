@@ -1,11 +1,11 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
-const {
-  Provider: ProviderSwapiService,
-  Consumer: ConsumerSwapiService
-} = createContext();
+const ContextSwapiService = createContext();
+const ProviderSwapiService = ContextSwapiService.Provider;
+const ConsumerSwapiService = ContextSwapiService.Consumer;
 
 export {
+  ContextSwapiService,
   ProviderSwapiService,
-  ConsumerSwapiService
+  ConsumerSwapiService,
 };

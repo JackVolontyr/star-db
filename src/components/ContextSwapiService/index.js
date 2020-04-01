@@ -1,9 +1,11 @@
 import {
+  ContextSwapiService,
   ProviderSwapiService,
-  ConsumerSwapiService
+  ConsumerSwapiService,
 } from './ContextSwapiService';
 
 export {
+  ContextSwapiService,
   ProviderSwapiService,
-  ConsumerSwapiService
+  ConsumerSwapiService,
 };
