@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { HocData, HocCheckRender } from '../HocHelpers';
 import './List.css';
 
@@ -16,8 +17,15 @@ const List = (props) => {
   return prepareItems(items);
 }
 
+// static
 List.defaultProps = {
   clickOnItem: (id) => console.log(id)
+}
+
+List.propTypes = {
+  clickOnItem: PropTypes.func,
+  // data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func.isRequired,
 }
 
 export default HocData(
