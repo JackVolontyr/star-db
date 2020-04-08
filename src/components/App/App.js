@@ -1,4 +1,6 @@
-import React, { Fragment, useEffect, useState, useCallback, useMemo } from 'react';
+// import React, { Fragment, useEffect, useState, useCallback, useMemo } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from '../Header';
 import { PagePerson, PagePlanet, PageStarship, } from '../Page_s';
@@ -13,21 +15,26 @@ import './App.css';
 
 const swapiService = new SwapiService();
 
-const _App = () => <div className="container">
+const App = () => <div className="container">
   <ErrorCatcher className="sw-block sw-block--padding jumbotron rounded">
     <ProviderSwapiService value={ swapiService }>
-      <Header />
-      <DetailsPlanetRandom />
-      <ErrorButton />
+      <Router>
+        <Header />
+        
+        <Route path="/" render={() => <h2>Welcome to StarDB!</h2>} exact />
+        <Route path="/" component={DetailsPlanetRandom} exact />
+        <Route path="/" component={ErrorButton} exact />
 
-      <PagePerson />
-      <PagePlanet />
-      <PageStarship />
+        <Route path="/people" component={PagePerson} />
+        <Route path="/planets" component={PagePlanet} />
+        <Route path="/starships" component={PageStarship} />
+      </Router>
     </ProviderSwapiService>
   </ErrorCatcher>
 </div>
 
 /* v Test v */
+/*
 const Notification = () => {
 
   const [ visible, setVisible ] = useState(true);
@@ -128,6 +135,7 @@ const PlanetInfo = () => {
 const App = () => <div>
   <PlanetInfo />
 </div>
+*/
 /* ^ Test ^ */
 
 export default App;

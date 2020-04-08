@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Page from '../Page';
 import ItemField from '../ItemField';
-import { ContextSwapiService, ConsumerSwapiService } from '../ContextSwapiService';
+import { ContextSwapiService } from '../ContextSwapiService';
 
 const PagePerson = () => {
   const { getPerson, getAllPeople, getImage } = useContext(ContextSwapiService);

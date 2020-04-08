@@ -1,0 +1,29 @@
+.sw-header {
+  padding-bottom: 15px;
+}
+
+.sw-header li:hover a { 
+  background-color: rgb(73, 73, 73); 
+  color: #fff; 
+}
+
+.sw-header a { 
+  border-radius: 4px;
+  text-decoration: none; 
+  transition: color .3s, background-color .3s;
+}
+
+.sw-header h3 {
+  margin: 0;
+}
+
+.sw-nav {
+  align-items: center;
+  margin: 0;
+  list-style: none;
+}
+
+.sw-nav a {
+  display: block;
+  padding: 10px 15px;
+}
