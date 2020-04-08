@@ -14,7 +14,10 @@ const HocData = (View, isLoading) => {
     componentDidMount() { this.updateResult(); };
 
     componentDidUpdate(prevProps, prevState) {
-      if (this.props.itemId !== prevProps.itemId) {
+      if (
+        this.props.itemId !== prevProps.itemId ||
+        this.props.dataPromise !== prevProps.dataPromise
+      ) {
         this.setState({ isLoading: true });
         this.updateResult();
       }

@@ -11,7 +11,7 @@ import './Page.css';
 export default class Page extends Component {
   state = { itemId: null }
   clickOnItem = (itemId) => { this.setState({ itemId }) }
-  getDataPromise = (itemId) => { if (itemId) return this.props.getDataItem(itemId) }
+  getDataPromise = (itemId) => { if (itemId || itemId === 0) return this.props.getDataItem(itemId) }
 
   render () {
     const {

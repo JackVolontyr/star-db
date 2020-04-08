@@ -1,5 +1,3 @@
-import noImage from './noimage.png';
-
 export default class DummySwapiService {
   _people = [{
     id: 0,
@@ -30,7 +28,7 @@ export default class DummySwapiService {
   }];
 
   _starships = [{
-    id: 1,
+    id: 0,
     name: 'USS Enterprise [TEST DATA]',
     model: 'NCC-1701-C',
     manufacturer: 'Northrop Grumman Shipbuilding',
@@ -39,6 +37,16 @@ export default class DummySwapiService {
     crew: 1000,
     passengers: 50,
     cargoCapacity: 100
+  }, {
+    id: 1,
+    name: 'F-17 [TEST DATA]',
+    model: 'F-17-888',
+    manufacturer: 'America',
+    costInCredits: '100000',
+    length: '100 meters',
+    crew: 100,
+    passengers: 1,
+    cargoCapacity: 0
   }];
 
   getAllPeople = async () => this._people
@@ -50,5 +58,8 @@ export default class DummySwapiService {
   getAllStarships = async () => this._starships
   getStarship = async (id) => this._starships[id]
 
-  getImage = (id, imageString) => `https://placeimg.com/${id}00/500/${imageString}`
+  getImage = (id, imageString) => {
+    if (imageString === 'starships') imageString = 'star';
+    return `https://placeimg.com/200/200/${imageString}-${id}`
+  }
 }
