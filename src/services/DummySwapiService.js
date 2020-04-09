@@ -1,11 +1,13 @@
 export default class DummySwapiService {
   _people = [{
+    root: 'people',
     id: 0,
     name: 'Bilbo Baggins [TEST DATA]',
     gender: 'male',
     birthYear: 'long ago',
     eyeColor: 'dark brown'
   }, {
+    root: 'people',
     id: 1,
     name: 'Frodo Baggins [TEST DATA]',
     gender: 'male',
@@ -14,12 +16,14 @@ export default class DummySwapiService {
   }];
 
   _planets = [{
+    root: 'planets',
     id: 0,
     name: 'Earth [TEST DATA]',
     population: '7.530.000.000',
     rotationPeriod: '23 hours 56 seconds',
     diameter: '12.742 km'
   }, {
+    root: 'planets',
     id: 1,
     name: 'Venus [TEST DATA]',
     population: 'not known',
@@ -28,6 +32,7 @@ export default class DummySwapiService {
   }];
 
   _starships = [{
+    root: 'starships',
     id: 0,
     name: 'USS Enterprise [TEST DATA]',
     model: 'NCC-1701-C',
@@ -38,6 +43,7 @@ export default class DummySwapiService {
     passengers: 50,
     cargoCapacity: 100
   }, {
+    root: 'starships',
     id: 1,
     name: 'F-17 [TEST DATA]',
     model: 'F-17-888',

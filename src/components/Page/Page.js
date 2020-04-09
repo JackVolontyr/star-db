@@ -40,6 +40,7 @@ export default class Page extends Component {
       <ErrorButton />
     </ErrorCatcher>
 
-    return <RowDouble left={ list } leftSize= { 4 } right={ details } rightSize={ 8 } />
+    return list;
+    // return <RowDouble left={ list } leftSize= { 4 } right={ details } rightSize={ 8 } />
   }
 }

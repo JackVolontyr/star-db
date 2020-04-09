@@ -1,6 +1,6 @@
 // import React, { Fragment, useEffect, useState, useCallback, useMemo } from 'react';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Header from '../Header';
 import Details from '../Details';
@@ -33,22 +33,50 @@ const App = () => {
           <Route path="/" component={DetailsPlanetRandom} exact />
           <Route path="/" component={ErrorButton} exact />
 
+          <Route path="/people" component={PagePerson} exact />
           <Route path="/people/:id" render={({match: {params: {id}}, location, history}) => {
             return <Details
               dataPromise={service.getPerson(id)}
               imageString={'characters'}
               imageData={service.getImage}
-              itemId={id}>
+              itemId={id}
+            >
+              <ItemField field="gender" label="Gender" />
+              <ItemField field="birthYear" label="Birth Year" />
+              <ItemField field="eyeColor" label="Eye Color" />
+            </Details>
+          }} />
+
+          <Route path="/planets" component={PagePlanet} exact />
+          <Route path="/planets/:id" render={({ match: { params: { id } }, location, history }) => {
+            return <Details
+              dataPromise={service.getPlanet(id)}
+              imageString={'planets'}
+              imageData={service.getImage}
+              itemId={id}
+            >
               <ItemField field="population" label="Population" />
               <ItemField field="rotationPeriod" label="Rotation Period" />
               <ItemField field="diameter" label="Diameter" />
             </Details>
           }} />
-          <Route path="/people" component={PagePerson} exact />
-
-          <Route path="/planets" component={PagePlanet} />
           
-          <Route path="/starships" component={PageStarship} />
+          <Route path="/starships" component={PageStarship} exact />
+          <Route path="/starships/:id" render={({ match: { params: { id } }, location, history }) => {
+            return <Details
+              dataPromise={service.getStarship(id)}
+              imageString={'starships'}
+              imageData={service.getImage}
+              itemId={id}
+            >
+              <ItemField field="model" label="Model" />
+              <ItemField field="manufacturer" label="Manufacturer" />
+              <ItemField field="length" label="Length" />
+              <ItemField field="crew" label="Crew" />
+              <ItemField field="passengers" label="Passengers" />
+              <ItemField field="cargoCapacity" label="Cargo Capacity" />
+            </Details>
+          }} />
         </Router>
       </ProviderSwapiService>
     </ErrorCatcher>

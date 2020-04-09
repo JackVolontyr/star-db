@@ -24,6 +24,7 @@ export default class SwapiService {
   // People/Person
   _prepareDataPerson = (person) => {
     return {
+      root: 'people',
       id: this._extractId(person),
       name: person.name,
       gender: person.gender,
@@ -45,6 +46,7 @@ export default class SwapiService {
   // Planet(s)
   _prepareDataPlanet = (planet) => {
     return {
+      root: 'planets',
       id: this._extractId(planet),
       name: planet.name,
       population: planet.population,
@@ -66,6 +68,7 @@ export default class SwapiService {
   // Starship(s)
   _prepareDataStarship = (starship) => {
     return {
+      root: 'starships',
       id: this._extractId(starship),
       name: starship.name,
       model: starship.model,

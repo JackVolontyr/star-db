@@ -9,7 +9,8 @@ import { HocConsumerSwapi } from '../HocHelpers';
 const DetailsPlanetRandom = HocConsumerSwapi(
   ({ props, swapiService }) => {
     const { getPlanet, getImage } = swapiService;
-    const itemId = Math.floor(Math.random() * 25) + 2;
+    // const itemId = Math.floor(Math.random() * 25) + 2;
+    const itemId = 1;
 
     return <Details
       dataPromise={ getPlanet(itemId) }

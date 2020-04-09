@@ -8,9 +8,9 @@ const Header = ({ changeService }) => {
     <div className="d-flex sw-header">
       <h3><Link to="/">StarDB</Link></h3>
       <ul className="d-flex sw-nav">
-        <li><Link to="/people">People</Link></li>
-        <li><Link to="/planets">Planets</Link></li>
-        <li><Link to="/starships">Starships</Link></li>
+        <li><Link to="/people/">People</Link></li>
+        <li><Link to="/planets/">Planets</Link></li>
+        <li><Link to="/starships/">Starships</Link></li>
       </ul>
       <button
         onClick={changeService} 

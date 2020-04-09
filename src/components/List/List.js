@@ -2,17 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { HocData, HocCheckRender } from '../HocHelpers';
 import './List.css';
+import { withRouter, Link } from 'react-router-dom';
 
 const List = (props) => {
-  const { data: { result: items }, clickOnItem, children } = props;
+  // const { data: { result: items }, clickOnItem, children } = props;
+  const { data: { result: items }, history, children } = props;
 
-  const prepareItems = (items) => {
-    return items.map(
-      (item) => <li onClick={ () => clickOnItem(item.id) } className="list-group-item" key={ item.id }>
-        { children(item) }
-      </li>
-    );
-  };
+  const clickOnItem = (item) => history.push(`/${item.root}/${item.id}`)
+
+  const prepareItems = (items) => items.map(
+    // (item) => <li onClick={ () => clickOnItem(item.id) } className="list-group-item" key={ item.id }>
+    (item) => <li onClick={ () => clickOnItem(item) } className="list-group-item" key={ item.id }>
+      {children(item)}
+      {/* <div>Go to the <Link to={`/${item.root}/${item.id}`}>/{item.root}/{item.id}</Link></div> */}
+    </li>
+  );
 
   return prepareItems(items);
 }
@@ -29,6 +33,9 @@ List.propTypes = {
 }
 
 export default HocData(
-  HocCheckRender(List, "sw-block sw-list jumbotron list-group rounded", 'ul'),
+  HocCheckRender(
+    withRouter(List), 
+    "sw-block sw-list jumbotron list-group rounded", 'ul'
+  ),
   true
 );
