@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { HocData, HocCheckRender } from '../HocHelpers';
 import './List.css';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const List = (props) => {
-  // const { data: { result: items }, clickOnItem, children } = props;
-  const { data: { result: items }, history, children } = props;
-
-  const clickOnItem = (item) => history.push(`/${item.root}/${item.id}`)
+  const { data: { result: items }, clickOnItem, children } = props;
 
   const prepareItems = (items) => items.map(
     // (item) => <li onClick={ () => clickOnItem(item.id) } className="list-group-item" key={ item.id }>

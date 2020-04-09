@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Details from '../Details';
 import Spinner from '../Spinner';
@@ -12,16 +12,19 @@ const DetailsPlanetRandom = HocConsumerSwapi(
     // const itemId = Math.floor(Math.random() * 25) + 2;
     const itemId = 1;
 
-    return <Details
-      dataPromise={ getPlanet(itemId) }
-      imageString={ 'planets' }
-      imageData={ getImage }
-      defaultMessage={ <Spinner /> }
-      itemId={ itemId }>
-      <ItemField field="population" label="Population" />
-      <ItemField field="rotationPeriod" label="Rotation Period" />
-      <ItemField field="diameter" label="Diameter" />
-    </Details>
+    return <Fragment>
+      <h2>Welcome to StarDB!</h2>
+      <Details
+        dataPromise={getPlanet(itemId)}
+        imageString={'planets'}
+        imageData={getImage}
+        defaultMessage={<Spinner />}
+        itemId={itemId}>
+        <ItemField field="population" label="Population" />
+        <ItemField field="rotationPeriod" label="Rotation Period" />
+        <ItemField field="diameter" label="Diameter" />
+      </Details>
+    </Fragment>
   }
 );
 
